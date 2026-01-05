@@ -16,9 +16,8 @@ function SidebarMenu() {
     ];
 
     const socialLinks = [
-        { href: 'https://t.me/+998774040066', icon: 'lab la-telegram', label: 'Telegram' },
-        { href: 'https://github.com/QuvonchbekBobojonov', icon: 'lab la-github', label: 'GitHub' },
-        { href: 'https://www.linkedin.com/in/moorfo/', icon: 'lab la-linkedin-in', label: 'LinkedIn' },
+        { href: 'https://t.me/iamyshv', icon: 'lab la-telegram', label: 'Telegram' },
+        { href: 'https://github.com/asilweebx', icon: 'lab la-github', label: 'GitHub' },
     ];
 
     return (
