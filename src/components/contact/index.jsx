@@ -35,7 +35,7 @@ function Contact() {
         setSubmitted(false);
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/send_telegram/', data, {
+            const response = await axios.post('https://portfolio-backend-rkv4.onrender.com/send_telegram/', data, {
                 headers: {'Content-Type': 'multipart/form-data'},
             });
 
