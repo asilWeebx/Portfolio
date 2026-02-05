@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import portfolioImage1 from '@assets/portfolio/12.jpeg';
-import portfolioImage2 from '@assets/portfolio/14.jpeg';
-import portfolioImage3 from '@assets/portfolio/15.jpeg';
+import portfolioImage1 from '@assets/portfolio/12.JPEG';
+import portfolioImage2 from '@assets/portfolio/14.JPEG';
+import portfolioImage3 from '@assets/portfolio/15.JPEG';
+import portfolioImage4 from '@assets/portfolio/16.png';
 
 function Portfolio() {
     const projects = [
@@ -47,6 +48,20 @@ function Portfolio() {
         'REST API',
         'PostgreSQL',
         'Authentication & Authorization'
+    ],
+    layout: 'full',
+},
+{
+    id: 4,
+    title: 'Partners Pharm - Landing Page with Admin dashboard',
+    image: portfolioImage4,
+    link: 'https://partnerspharm.com',
+    tech: [
+        'Django',
+        'Django REST Framework',
+        'React',
+        'REST API',
+        'PostgreSQL'
     ],
     layout: 'full',
 },
