@@ -15,6 +15,13 @@ export function formatViews(n: number): string {
   return String(n)
 }
 
+/** Har qanday yozilgan raqamni "+998 97 802 20 08" ko'rinishiga keltiradi. */
+export function formatPhone(phone: string): string {
+  const d = phone.replace(/\D/g, '')
+  const m = d.match(/^(998)(\d{2})(\d{3})(\d{2})(\d{2})$/)
+  return m ? `+${m[1]} ${m[2]} ${m[3]} ${m[4]} ${m[5]}` : phone.trim()
+}
+
 export function telHref(phone: string): string {
   return `tel:${phone.replace(/[^\d+]/g, '')}`
 }

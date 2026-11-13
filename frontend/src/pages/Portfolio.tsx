@@ -23,7 +23,7 @@ export default function Portfolio() {
 
   return (
     <>
-      <Seo title="Portfolio" description="Asilbek Yuldoshev loyihalari: onlayn do'konlar, mobil ilovalar, POS/ERP tizimlar va korporativ saytlar." />
+      <Seo title="Portfolio" description="Asilbek Yuldashev loyihalari: onlayn do'konlar, mobil ilovalar, POS/ERP tizimlar va korporativ saytlar." />
       <PageHero
         eyebrow="Ishlarim"
         title="Portfolio"

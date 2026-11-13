@@ -4,7 +4,7 @@ import BriefForm from '../components/BriefForm'
 import { SocialIcon } from '../components/Icons'
 import PageHero from '../components/PageHero'
 import Seo from '../components/Seo'
-import { telegramHandle, telHref } from '../lib/format'
+import { formatPhone, telegramHandle, telHref } from '../lib/format'
 
 export default function Brief() {
   const { data } = useSite()
@@ -37,7 +37,7 @@ export default function Brief() {
               <h4>To'g'ridan-to'g'ri aloqa</h4>
               <ul className="direct">
                 {s?.telegram && <li><SocialIcon name="telegram" size={18} /><a href={s.telegram} target="_blank" rel="noreferrer">{telegramHandle(s.telegram)}</a></li>}
-                {s?.phone && <li><Phone size={18} /><a href={telHref(s.phone)}>{s.phone}</a></li>}
+                {s?.phone && <li><Phone size={18} /><a href={telHref(s.phone)}>{formatPhone(s.phone)}</a></li>}
                 {s?.email && <li><Mail size={18} /><a href={`mailto:${s.email}`}>{s.email}</a></li>}
                 {!s?.telegram && !s?.phone && !s?.email && <li className="muted">Kontaktlar admin paneldagi "Sayt sozlamalari"dan qo'shiladi.</li>}
               </ul>

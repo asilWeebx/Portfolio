@@ -25,7 +25,7 @@ export default function Logo({ compact = false }: { compact?: boolean }) {
       <LogoMark size={compact ? 34 : 40} />
       <span className="logo__text">
         <b>Asilbek</b>
-        <span>Yuldoshev</span>
+        <span>Yuldashev</span>
       </span>
     </span>
   )

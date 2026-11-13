@@ -1,5 +1,6 @@
 import { ArrowRight, CircleCheck, LoaderCircle } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { ApiError, useContact, useSite } from '../api/client'
 import { cx } from '../lib/format'
 import { ServiceIcon } from './Icons'
@@ -25,7 +26,10 @@ function formatPhone(raw: string) {
 export default function BriefForm({ compact = false }: { compact?: boolean }) {
   const { data } = useSite()
   const contact = useContact()
-  const [services, setServices] = useState<number[]>([])
+  const [params] = useSearchParams()
+  // /brief?s=3 — hero'dagi chatdan tanlangan xizmat oldindan belgilanadi
+  const preset = Number(params.get('s'))
+  const [services, setServices] = useState<number[]>(preset > 0 ? [preset] : [])
   const [budget, setBudget] = useState('unknown')
   const [form, setForm] = useState({ name: '', phone: '+998 ', email: '', company: '', message: '', website: '' })
   const [errors, setErrors] = useState<Errors>({})

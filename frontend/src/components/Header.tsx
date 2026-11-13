@@ -2,7 +2,7 @@ import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useSite } from '../api/client'
-import { cx, telHref } from '../lib/format'
+import { cx, formatPhone, telHref } from '../lib/format'
 import { SocialIcon } from './Icons'
 import Logo from './Logo'
 
@@ -13,10 +13,11 @@ const NAV = [
   { to: '/blog', label: 'Blog' },
 ]
 
-/** +998 90 123 45 67 → ["+998 90", "123 45 67"] (UIC uslubida: prefiks kulrang, raqam qalin) */
+/** +998 90 123 45 67 → ["+998 90", "123 45 67"] (prefiks kulrang, raqam qalin) */
 function splitPhone(phone: string): [string, string] {
-  const m = phone.trim().match(/^(\+?\d{3}\s?\(?\d{2}\)?)\s?(.*)$/)
-  return m ? [m[1], m[2]] : ['', phone]
+  const f = formatPhone(phone)
+  const m = f.match(/^(\+998 \d{2}) (.*)$/)
+  return m ? [m[1], m[2]] : ['', f]
 }
 
 export default function Header() {
@@ -45,7 +46,10 @@ export default function Header() {
 
   const [pre, num] = s?.phone ? splitPhone(s.phone) : ['', '']
 
+  const close = () => setOpen(false)
+
   return (
+    <>
     <header className={cx('header', overHero ? 'header--hero' : 'header--solid')}>
       <div className="container header__inner">
         <Link to="/" className="header__logo" aria-label="Bosh sahifa">
@@ -86,23 +90,25 @@ export default function Header() {
           </button>
         </div>
       </div>
+    </header>
 
-      <div className={cx('mobile-menu', open && 'is-open')} aria-hidden={!open}>
+    {/* Menyu header'dan tashqarida: header'dagi backdrop-filter fixed elementni o'ziga "qamab" qo'ymasligi uchun */}
+    <div className={cx('mobile-menu', open && 'is-open')} aria-hidden={!open}>
         <nav className="container mobile-menu__nav">
-          <Link to="/" className="mobile-menu__link">Bosh sahifa</Link>
+          <Link to="/" className="mobile-menu__link" onClick={close}>Bosh sahifa</Link>
           {NAV.map((n, i) => (
-            <Link key={n.to} to={n.to} className="mobile-menu__link" style={{ transitionDelay: open ? `${60 + i * 40}ms` : '0ms' }}>
+            <Link key={n.to} to={n.to} className="mobile-menu__link" onClick={close} style={{ transitionDelay: open ? `${60 + i * 40}ms` : '0ms' }}>
               {n.label}
             </Link>
           ))}
-          <Link to="/brief" className="btn btn--primary btn--lg mobile-menu__cta">Brief to'ldirish</Link>
+          <Link to="/brief" className="btn btn--primary btn--lg mobile-menu__cta" onClick={close}>Brief to'ldirish</Link>
           <div className="mobile-menu__contacts">
-            {s?.phone && <a href={telHref(s.phone)}>{s.phone}</a>}
+            {s?.phone && <a href={telHref(s.phone)}>{formatPhone(s.phone)}</a>}
             {s?.email && <a href={`mailto:${s.email}`}>{s.email}</a>}
             {s?.telegram && <a href={s.telegram} target="_blank" rel="noreferrer">Telegram</a>}
           </div>
         </nav>
       </div>
-    </header>
+    </>
   )
 }

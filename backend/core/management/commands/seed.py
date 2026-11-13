@@ -221,8 +221,8 @@ class Command(BaseCommand):
         s = SiteSettings.load()
         if not s.about_text:
             s.about_text = (
-                "Men Toshkentda yashovchi full-stack dasturchiman. Django va DRF'da backend, "
-                "React va Next.js'da frontend, Flutter'da mobil ilovalar yarataman.\n\n"
+                "Toshkentdanman. Backend'ni Django va DRF'da, frontend'ni React va Next.js'da, "
+                "mobil ilovalarni Flutter'da yozaman.\n\n"
                 "Asosiy yo'nalishlarim — savdo va ombor tizimlari (POS/ERP), onlayn do'konlar, "
                 "Telegram botlar va Mini App'lar. G'oyani tahlil qilishdan tortib serverga chiqarish va "
                 "qo'llab-quvvatlashgacha bo'lgan butun jarayonni o'zim olib boraman.\n\n"
@@ -230,7 +230,7 @@ class Command(BaseCommand):
                 "boshqalarga ham foydasi tegsin deb."
             )
             s.meta_description = (
-                "Asilbek Yuldoshev — full-stack dasturchi. Veb-saytlar, mobil ilovalar, Telegram botlar, "
+                "Asilbek Yuldashev — full-stack dasturchi. Veb-saytlar, mobil ilovalar, Telegram botlar, "
                 "CRM/ERP va POS tizimlar. Portfolio va dasturlash haqida blog."
             )
             s.save()

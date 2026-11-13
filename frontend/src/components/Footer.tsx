@@ -1,7 +1,7 @@
 import { ArrowUpRight, Mail, MapPin, Phone } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 import { useSite } from '../api/client'
-import { telHref } from '../lib/format'
+import { formatPhone, telHref } from '../lib/format'
 import { SOCIAL_KEYS, SocialIcon } from './Icons'
 import Logo from './Logo'
 
@@ -58,7 +58,7 @@ export default function Footer() {
           <div>
             <h4>Aloqa</h4>
             <ul className="footer__contacts">
-              {s?.phone && <li><Phone size={16} /><a href={telHref(s.phone)}>{s.phone}</a></li>}
+              {s?.phone && <li><Phone size={16} /><a href={telHref(s.phone)}>{formatPhone(s.phone)}</a></li>}
               {s?.email && <li><Mail size={16} /><a href={`mailto:${s.email}`}>{s.email}</a></li>}
               {s?.telegram && <li><SocialIcon name="telegram" size={16} /><a href={s.telegram} target="_blank" rel="noreferrer">Telegram</a></li>}
               {s?.location && <li><MapPin size={16} /><span>{s.location}</span></li>}
@@ -67,7 +67,7 @@ export default function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <span>© {year} Asilbek Yuldoshev</span>
+          <span>© {year} Asilbek Yuldashev</span>
           <span>asilbek-yuldashev.uz</span>
         </div>
       </div>

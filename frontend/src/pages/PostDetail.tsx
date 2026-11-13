@@ -107,7 +107,7 @@ export default function PostDetail() {
             <div className="post__meta">
               <span className="post__author">
                 <img src={site?.settings.avatar || '/brand/logo-mark.svg'} alt="" />
-                {site?.settings.full_name || 'Asilbek Yuldoshev'}
+                {site?.settings.full_name || 'Asilbek Yuldashev'}
               </span>
               <span><Calendar size={16} /> {formatDate(post.published_at)}</span>
               <span><Clock size={16} /> {post.reading_time} daqiqa</span>
@@ -167,7 +167,7 @@ export default function PostDetail() {
             <div className="author-box">
               <img src={site?.settings.avatar || '/brand/logo-mark.svg'} alt="" />
               <div>
-                <b>{site?.settings.full_name || 'Asilbek Yuldoshev'}</b>
+                <b>{site?.settings.full_name || 'Asilbek Yuldashev'}</b>
                 <p>{site?.settings.role || 'Full-stack dasturchi'}. Savollar yoki loyiha bo'yicha yozing — bajonidil javob beraman.</p>
                 <div className="author-box__actions">
                   <Link to="/brief" className="btn btn--primary btn--sm">Loyiha muhokamasi</Link>

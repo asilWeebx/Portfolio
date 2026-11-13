@@ -5,7 +5,7 @@ from django.urls import include, path
 
 from core.sitemap import robots_txt, sitemap_xml
 
-admin.site.site_header = "Asilbek Yuldoshev"
+admin.site.site_header = "Asilbek Yuldashev"
 admin.site.index_title = "Boshqaruv paneli"
 
 urlpatterns = [

@@ -1,54 +1,29 @@
 import { ArrowUpRight, Phone, Play } from 'lucide-react'
 import { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useSite } from '../api/client'
 import { telHref } from '../lib/format'
+import HeroChat from './HeroChat'
 import { SocialIcon } from './Icons'
 
-/** "AY" monogrammasining shisha harflari (logodagi shakllar: A — cho'qqi, Y — shox). */
-function GlassLetters() {
-  return (
-    <div className="glass" aria-hidden="true">
-      <div className="glass__blur" />
-      <svg className="glass__svg" viewBox="0 0 1040 660">
-        <defs>
-          <linearGradient id="glass-fill" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#fff" stopOpacity=".26" />
-            <stop offset=".55" stopColor="#fff" stopOpacity=".07" />
-            <stop offset="1" stopColor="#fff" stopOpacity=".14" />
-          </linearGradient>
-          <filter id="glass-edge" x="-5%" y="-5%" width="110%" height="110%">
-            <feMorphology in="SourceAlpha" operator="erode" radius="2.5" result="inner" />
-            <feComposite in="SourceAlpha" in2="inner" operator="out" result="edge" />
-            <feFlood floodColor="#fff" floodOpacity=".55" />
-            <feComposite in2="edge" operator="in" />
-          </filter>
-          <g id="ay-shape">
-            <path
-              fillRule="evenodd"
-              d="M40 600 300 40l260 560H40Zm260-262-104 262h208L300 338Z"
-              stroke="#fff"
-              strokeWidth="40"
-              strokeLinejoin="round"
-              fill="#fff"
-            />
-            <path d="M610 70l180 260 180-260M790 330v260" fill="none" stroke="#fff" strokeWidth="120" strokeLinecap="round" strokeLinejoin="round" />
-          </g>
-        </defs>
-        <mask id="ay-mask">
-          <use href="#ay-shape" />
-        </mask>
-        <rect width="1040" height="660" fill="url(#glass-fill)" mask="url(#ay-mask)" />
-        <use href="#ay-shape" filter="url(#glass-edge)" />
-      </svg>
-    </div>
-  )
+/** Fon variantlari — vaqtincha: /?bg=teton-pink kabi almashtirib ko'rish uchun. */
+const BACKGROUNDS = ['teton-pink', 'teton-purple', 'denali'] as const
+
+function bgVars(key: string): React.CSSProperties {
+  return {
+    '--hero-xl': `url('/images/hero-${key}-2400.webp')`,
+    '--hero-md': `url('/images/hero-${key}-1440.webp')`,
+    '--hero-sm': `url('/images/hero-${key}-mobile.webp')`,
+  } as React.CSSProperties
 }
 
 export default function Hero() {
   const { data } = useSite()
   const s = data?.settings
   const bg = useRef<HTMLDivElement>(null)
+  const [params] = useSearchParams()
+  const choice = params.get('bg')
+  const bgKey = BACKGROUNDS.includes(choice as never) ? (choice as string) : BACKGROUNDS[0]
 
   // yengil parallaks: foto skroll bilan sekinroq siljiydi
   useEffect(() => {
@@ -71,9 +46,8 @@ export default function Hero() {
 
   return (
     <section className="hero">
-      <div ref={bg} className="hero__bg" aria-hidden="true" />
+      <div ref={bg} className="hero__bg" style={bgVars(bgKey)} aria-hidden="true" />
       <div className="hero__shade" aria-hidden="true" />
-      <GlassLetters />
 
       <div className="container hero__inner">
         <div className="hero__content">
@@ -97,6 +71,7 @@ export default function Hero() {
             )}
           </div>
         </div>
+        <HeroChat />
       </div>
 
       <a href="#portfolio" className="reel" aria-label="Loyihalarni ko'rish">

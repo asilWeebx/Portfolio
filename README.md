@@ -61,5 +61,9 @@ sudo certbot --nginx -d asilbek-yuldashev.uz -d www.asilbek-yuldashev.uz
 
 ## Rasmlar litsenziyasi
 
-Hero fotosurati: "Aurora Over Mendenhall Glacier" — USDA Forest Service (Harvey Hergett), Public Domain,
-indigo rangga qayta ishlangan.
+Hero fon fotosuratlari — barchasi Public Domain (AQSh Milliy bog'lar xizmati, Wikimedia Commons):
+- `hero-teton-pink`, `hero-teton-purple` — "Winter Sunset", Grand Teton NPS
+- `hero-denali` — "Sunrise alpenglow on Denali", NPS Photo / Tim Rains
+
+Variantni almashtirib ko'rish: `/?bg=teton-pink`, `/?bg=teton-purple`, `/?bg=denali`
+(standart — `frontend/src/components/Hero.tsx` dagi `BACKGROUNDS` ro'yxatining birinchisi).

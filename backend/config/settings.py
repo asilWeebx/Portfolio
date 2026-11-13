@@ -201,8 +201,8 @@ CKEDITOR_5_CONFIGS = {
 
 # ---------------------------------------------------------------- Unfold admin
 UNFOLD = {
-    "SITE_TITLE": "Asilbek Yuldoshev — Admin",
-    "SITE_HEADER": "Asilbek Yuldoshev",
+    "SITE_TITLE": "Asilbek Yuldashev — Admin",
+    "SITE_HEADER": "Asilbek Yuldashev",
     "SITE_SUBHEADER": "Portfolio & Blog boshqaruvi",
     "SITE_URL": FRONTEND_URL,
     "SITE_SYMBOL": "rocket_launch",

@@ -70,7 +70,7 @@ export default function Home() {
             </Reveal>
             <svg viewBox="0 0 140 140" className="about-home__ring" aria-hidden="true">
               <defs><path id="about-ring" d="M70 70m-52 0a52 52 0 1 1 104 0a52 52 0 1 1-104 0" /></defs>
-              <text><textPath href="#about-ring" textLength="324" lengthAdjust="spacing">FULL-STACK • DASTURCHI • </textPath></text>
+              <text><textPath href="#about-ring" textLength="324" lengthAdjust="spacing">G'OYA • DIZAYN • KOD • </textPath></text>
             </svg>
           </div>
 
@@ -78,8 +78,8 @@ export default function Home() {
             <span className="eyebrow">Salom...</span>
             <h2 className="section-title">Men haqimda</h2>
             <p className="lead">
-              Men {s?.full_name || 'Asilbek Yuldoshev'} — {s?.role?.toLowerCase() || 'full-stack dasturchi'}.
-              Do'konlar va bizneslar uchun savdo tizimlari, onlayn do'konlar, mobil ilovalar va Telegram botlar yarataman.
+              {years ?? 3} yildan beri do'konlar va bizneslar uchun savdo tizimlari, onlayn do'konlar,
+              mobil ilovalar va Telegram botlar yaratib kelaman.
             </p>
             <p className="muted-p">
               G'oyani tahlil qilishdan tortib serverga chiqarish, App Store va Play Market'ga joylash hamda

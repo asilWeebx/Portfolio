@@ -24,7 +24,7 @@ class SiteSettings(models.Model):
     """Yagona yozuv (singleton) — saytning umumiy matnlari va kontaktlar."""
 
     # Hero
-    full_name = models.CharField("To'liq ism", max_length=120, default="Asilbek Yuldoshev")
+    full_name = models.CharField("To'liq ism", max_length=120, default="Asilbek Yuldashev")
     role = models.CharField("Kasb / lavozim", max_length=120, default="Full-stack dasturchi")
     hero_title = models.CharField("Hero sarlavha", max_length=200, default="Raqamli yechimlar yarataman")
     hero_subtitle = models.CharField(

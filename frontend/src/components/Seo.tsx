@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async'
 import { useLocation } from 'react-router-dom'
 import { useSite } from '../api/client'
 
-const SITE = 'Asilbek Yuldoshev'
+const SITE = 'Asilbek Yuldashev'
 
 interface Props {
   title?: string

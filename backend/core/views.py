@@ -57,6 +57,7 @@ class HomeView(APIView):
             "stats": {
                 "years": s.years_experience,
                 "projects": projects.count(),
+                "apps": projects.exclude(app_store_url="", play_store_url="").count(),
                 "clients": s.happy_clients,
                 "posts": Post.published.count(),
             },

@@ -165,7 +165,7 @@ export interface HomeData {
   clients: ClientLogo[]
   featured_projects: ProjectListItem[]
   latest_posts: PostListItem[]
-  stats: { years: number; projects: number; clients: number; posts: number }
+  stats: { years: number; projects: number; apps: number; clients: number; posts: number }
 }
 
 export interface Paginated<T> {
