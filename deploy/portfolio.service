@@ -4,10 +4,11 @@ Description=asilbek-yuldashev.uz (Django + gunicorn)
 After=network.target
 
 [Service]
-User=deploy
-WorkingDirectory=/srv/portfolio/backend
-EnvironmentFile=/srv/portfolio/backend/.env
-ExecStart=/srv/portfolio/backend/.venv/bin/gunicorn config.wsgi:application --bind 127.0.0.1:8010 --workers 3 --timeout 60
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/portfolio/backend
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/portfolio/backend/venv/bin/gunicorn config.wsgi:application --bind 127.0.0.1:8010 --workers 2 --timeout 60
 Restart=always
 
 [Install]

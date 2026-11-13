@@ -54,17 +54,18 @@ Framework, build buyrug'i va proxy qoidalari `frontend/vercel.json` ichida. Dome
 
 **DNS:** `api` subdomeni uchun A yozuv → VPS IP manzili.
 
-**VPS:** quyidagi qadamlar, faqat nginx uchun `deploy/nginx-api.conf` ishlatiladi
-(`npm run build` va frontend qismi shart emas).
+**VPS (Hetzner, hozir shu yerda ishlaydi):** `/opt/portfolio`, servis `portfolio` (gunicorn 127.0.0.1:8010),
+nginx sayti `/etc/nginx/sites-available/portfolio-api`, baza PostgreSQL `portfolio`.
+Yangilanish chiqarish: `git push`, keyin serverda `sudo bash /opt/portfolio/deploy/update.sh`.
 
 ## Deploy (hammasi bitta VPS'da)
 
 ```bash
-# serverda: /srv/portfolio
-cd backend && cp .env.example .env   # SECRET_KEY, DATABASE_URL va h.k.ni to'ldiring
-.venv/bin/pip install -r requirements.txt
-.venv/bin/python manage.py migrate && .venv/bin/python manage.py collectstatic --noinput
-# media'ni lokal kompyuterdan ko'chiring: rsync -av backend/media/ server:/srv/portfolio/backend/media/
+# serverda: /opt/portfolio
+cd backend && python3 -m venv venv && cp .env.example .env   # SECRET_KEY, DATABASE_URL va h.k.ni to'ldiring
+venv/bin/pip install -r requirements.txt
+venv/bin/python manage.py migrate && venv/bin/python manage.py collectstatic --noinput
+# media'ni lokal kompyuterdan ko'chiring: rsync -av backend/media/ server:/opt/portfolio/backend/media/
 
 cd ../frontend && npm ci && npm run build
 
