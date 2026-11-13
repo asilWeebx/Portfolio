@@ -1,0 +1,82 @@
+/* Dashboard (templates/admin/index.html) — Unfold ustiga qo'shimcha uslublar */
+.ay-dash { display: flex; flex-direction: column; gap: 24px; }
+
+.ay-hello {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 24px 28px; border-radius: 14px; color: #fff;
+  background:
+    radial-gradient(120% 140% at 100% 0%, rgba(91, 76, 240, .35) 0%, transparent 55%),
+    linear-gradient(135deg, #141415 0%, #1e1e20 100%);
+  border: 1px solid rgba(255, 255, 255, .06);
+}
+.ay-hello h1 { font-size: 22px; font-weight: 700; margin: 0 0 4px; letter-spacing: -.01em; }
+.ay-hello p { margin: 0; opacity: .7; font-size: 14px; }
+.ay-quick { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.ay-btn {
+  display: inline-flex; align-items: center; gap: 6px; height: 38px; padding: 0 14px;
+  border-radius: 10px; font-size: 13px; font-weight: 600; color: #fff !important;
+  background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .1);
+  transition: background .15s;
+}
+.ay-btn:hover { background: rgba(255, 255, 255, .16); }
+.ay-btn .material-symbols-outlined { font-size: 18px; }
+.ay-btn--primary { background: #5B4CF0; border-color: #5B4CF0; }
+.ay-btn--primary:hover { background: #4A3BDB; }
+
+.ay-cards { display: grid; gap: 16px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1100px) { .ay-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .ay-cards { grid-template-columns: 1fr; } }
+
+.ay-card {
+  position: relative; display: flex; flex-direction: column; gap: 2px; padding: 20px;
+  border-radius: 12px; background: #fff; border: 1px solid var(--color-base-200, #e4e4e7);
+  overflow: hidden; transition: border-color .15s, transform .15s;
+}
+.ay-card:hover { border-color: #5B4CF0; transform: translateY(-1px); }
+.ay-card__icon {
+  position: absolute; right: 16px; top: 16px; font-size: 22px !important;
+  color: #5B4CF0; background: rgba(91, 76, 240, .1); border-radius: 10px; padding: 8px;
+}
+.ay-card__title { font-size: 13px; opacity: .65; }
+.ay-card__value { font-size: 30px; font-weight: 700; letter-spacing: -.02em; line-height: 1.2; }
+.ay-card__hint { font-size: 12px; opacity: .55; }
+
+.ay-grid { display: grid; gap: 16px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 1100px) { .ay-grid { grid-template-columns: 1fr; } }
+
+.ay-panel {
+  border-radius: 12px; background: #fff; border: 1px solid var(--color-base-200, #e4e4e7);
+  padding: 8px 8px 12px;
+}
+.ay-panel header { display: flex; align-items: center; justify-content: space-between; padding: 10px 12px 8px; }
+.ay-panel h2 { font-size: 15px; font-weight: 600; margin: 0; }
+.ay-panel header a { font-size: 12px; color: #5B4CF0; }
+.ay-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 12px; border-radius: 8px; transition: background .12s;
+}
+.ay-row:hover { background: rgba(91, 76, 240, .07); }
+.ay-row__main { display: flex; flex-direction: column; min-width: 0; }
+.ay-row__main b { font-weight: 600; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ay-row__main small { font-size: 12px; opacity: .6; }
+.ay-row .material-symbols-outlined { font-size: 18px; opacity: .5; }
+.ay-views { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; opacity: .8; }
+.ay-empty { padding: 12px; font-size: 13px; opacity: .6; margin: 0; }
+
+.ay-pill { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 999px; white-space: nowrap; }
+.ay-pill--new { background: rgba(59, 130, 246, .12); color: #2563eb; }
+.ay-pill--in_progress { background: rgba(234, 179, 8, .15); color: #a16207; }
+.ay-pill--done { background: rgba(91, 76, 240, .12); color: #4338ca; }
+.ay-pill--spam { background: rgba(239, 68, 68, .12); color: #dc2626; }
+
+/* Qorong'i rejim */
+.dark .ay-card, .dark .ay-panel { background: var(--color-base-900, #18181b); border-color: var(--color-base-800, #27272a); }
+.dark .ay-pill--new { color: #93c5fd; }
+.dark .ay-pill--in_progress { color: #fde047; }
+.dark .ay-pill--done { color: #a5b4fc; }
+.dark .ay-pill--spam { color: #fca5a5; }
+
+/* CKEditor — admin ichida qulayroq balandlik */
+.ck-editor__editable_inline { min-height: 420px; }
+.django_ckeditor_5 { width: 100%; }

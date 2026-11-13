@@ -1,0 +1,20 @@
+/* CKEditor 5 — Unfold qorong'i rejimida o'qiladigan bo'lishi uchun */
+.dark .ck.ck-editor__main > .ck-editor__editable,
+.dark .ck.ck-toolbar,
+.dark .ck.ck-dropdown__panel,
+.dark .ck.ck-list,
+.dark .ck.ck-balloon-panel {
+  background: #18181b !important;
+  color: #e4e4e7 !important;
+  border-color: #3f3f46 !important;
+}
+.dark .ck.ck-button,
+.dark .ck.ck-button .ck-button__label,
+.dark .ck.ck-dropdown__button { color: #e4e4e7 !important; }
+.dark .ck.ck-button:hover:not(.ck-disabled),
+.dark .ck.ck-list__item .ck-button:hover:not(.ck-disabled) { background: #27272a !important; }
+.dark .ck.ck-button.ck-on { background: #134e4a !important; }
+.dark .ck-content pre { background: #0e0e0f !important; color: #e4e4e7 !important; }
+.dark .ck-content blockquote { border-left-color: #5B4CF0 !important; }
+.dark .ck .ck-input { background: #27272a !important; color: #e4e4e7 !important; }
+.ck-content { font-size: 16px; line-height: 1.7; }

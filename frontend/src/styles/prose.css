@@ -1,0 +1,63 @@
+/* Maqola va case study matni (CKEditor HTML) — ochiq fon uchun */
+.prose { color: var(--text-2); font-size: 18px; line-height: 1.8; overflow-wrap: break-word; }
+.prose > * + * { margin-top: 1.15em; }
+.prose h2 { color: var(--text); font-size: clamp(25px, 2.6vw, 31px); font-weight: 700; margin-top: 2em; scroll-margin-top: calc(var(--header-h) + 20px); }
+.prose h3 { color: var(--text); font-size: 22px; font-weight: 700; margin-top: 1.8em; scroll-margin-top: calc(var(--header-h) + 20px); }
+.prose h4 { color: var(--text); font-size: 19px; font-weight: 600; margin-top: 1.6em; }
+.prose h2 + *, .prose h3 + * { margin-top: .7em; }
+.prose > :first-child { margin-top: 0; }
+.prose strong, .prose b { color: var(--text); font-weight: 600; }
+.prose a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.prose a:hover { text-decoration-thickness: 2px; }
+.prose mark { background: rgba(91, 76, 240, .15); color: var(--text); padding: 0 3px; border-radius: 4px; }
+.prose mark.marker-yellow { background: rgba(250, 204, 21, .4); }
+.prose mark.marker-pink { background: rgba(236, 72, 153, .25); }
+.prose mark.marker-blue { background: rgba(59, 130, 246, .2); }
+
+.prose ul, .prose ol { padding-left: 1.4em; }
+.prose ul { list-style: none; padding-left: 0; }
+.prose ul > li { position: relative; padding-left: 1.6em; }
+.prose ul > li::before { content: ''; position: absolute; left: .3em; top: .72em; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.prose ol { list-style: decimal; }
+.prose ol > li::marker { color: var(--accent); font-weight: 700; }
+.prose li + li { margin-top: .45em; }
+
+.prose blockquote { margin-left: 0; margin-right: 0; padding: 18px 24px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 14px 14px 0; color: var(--text); font-size: 1.05em; font-style: italic; }
+.prose hr { border: 0; height: 1px; background: var(--border); margin: 2.5em 0; }
+
+.prose code { font-family: var(--mono); font-size: .85em; background: var(--accent-soft); padding: .12em .42em; border-radius: 6px; color: var(--accent-ink); }
+.prose pre { position: relative; margin-left: 0; margin-right: 0; padding: 22px; border-radius: 16px; background: var(--night); overflow-x: auto; font-size: 14.5px; line-height: 1.7; box-shadow: var(--shadow); }
+.prose pre code { background: none; padding: 0; color: #e4e4ef; font-size: inherit; white-space: pre; }
+.copy-btn { position: absolute; top: 10px; right: 10px; height: 30px; padding: 0 12px; border-radius: 8px; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .14); color: #d4d4e4; font-size: 12px; font-weight: 600; font-family: var(--font); opacity: 0; transition: opacity .2s; }
+.prose pre:hover .copy-btn, .copy-btn:focus-visible { opacity: 1; }
+@media (hover: none) { .copy-btn { opacity: 1; } }
+
+.prose img { border-radius: 16px; border: 1px solid var(--border); height: auto; }
+.prose figure { margin: 2em 0; }
+.prose figure.image { display: table; margin-left: auto; margin-right: auto; max-width: 100%; }
+.prose figure.image img { width: 100%; }
+.prose figure.image-style-align-left { float: left; margin: .4em 1.5em 1em 0; max-width: 50%; }
+.prose figure.image-style-align-right { float: right; margin: .4em 0 1em 1.5em; max-width: 50%; }
+.prose figcaption { text-align: center; color: var(--muted); font-size: 14px; margin-top: 10px; caption-side: bottom; display: table-caption; }
+.prose figure.media iframe { border-radius: 16px; }
+.prose figure.table { overflow-x: auto; }
+.prose table { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+.prose th, .prose td { border: 1px solid var(--border); padding: 10px 14px; text-align: left; }
+.prose th { background: var(--surface-2); color: var(--text); font-weight: 600; }
+@media (max-width: 640px) {
+  .prose { font-size: 17px; }
+  .prose figure.image-style-align-left, .prose figure.image-style-align-right { float: none; max-width: 100%; margin: 1.5em 0; }
+}
+
+/* highlight.js — qorong'i kod bloki */
+.hljs-comment, .hljs-quote { color: #7c7f9a; font-style: italic; }
+.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-section, .hljs-doctag { color: #c4b5fd; }
+.hljs-string, .hljs-regexp, .hljs-addition, .hljs-attribute, .hljs-meta .hljs-string { color: #86efac; }
+.hljs-number, .hljs-symbol, .hljs-bullet, .hljs-link { color: #fdba74; }
+.hljs-title, .hljs-title.function_, .hljs-name { color: #93c5fd; }
+.hljs-built_in, .hljs-type, .hljs-class .hljs-title, .hljs-title.class_ { color: #fde68a; }
+.hljs-variable, .hljs-template-variable, .hljs-params, .hljs-attr { color: #f1f1f8; }
+.hljs-meta, .hljs-meta .hljs-keyword { color: #a5b4fc; }
+.hljs-deletion { color: #fda4af; }
+.hljs-emphasis { font-style: italic; }
+.hljs-strong { font-weight: 700; }

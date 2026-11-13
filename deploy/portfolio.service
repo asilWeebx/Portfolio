@@ -1,0 +1,14 @@
+# /etc/systemd/system/portfolio.service
+[Unit]
+Description=asilbek-yuldashev.uz (Django + gunicorn)
+After=network.target
+
+[Service]
+User=deploy
+WorkingDirectory=/srv/portfolio/backend
+EnvironmentFile=/srv/portfolio/backend/.env
+ExecStart=/srv/portfolio/backend/.venv/bin/gunicorn config.wsgi:application --bind 127.0.0.1:8010 --workers 3 --timeout 60
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

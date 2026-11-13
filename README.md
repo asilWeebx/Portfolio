@@ -1,17 +1,65 @@
-# React + Vite
+# asilbek-yuldashev.uz
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Shaxsiy portfolio va blog: Django + DRF (admin panel, API) va React + Vite (sayt).
 
-Currently, two official plugins are available:
+```
+backend/    Django 5.1, DRF, Unfold admin, CKEditor 5
+frontend/   React 18, TypeScript, Vite, React Query
+deploy/     nginx.conf, portfolio.service (gunicorn)
+assets/     loyihalar skrinshotlari (gitga kirmaydi)
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Lokal ishga tushirish
 
-## React Compiler
+```bash
+# backend — http://localhost:8010/admin
+cd backend
+python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt
+.venv/bin/python manage.py migrate
+.venv/bin/python manage.py seed              # xizmatlar, texnologiyalar, blog mavzulari, namunaviy maqolalar
+.venv/bin/python manage.py import_projects   # assets/project-shots → loyihalar, mockup muqovalar
+.venv/bin/python manage.py createsuperuser
+.venv/bin/python manage.py runserver 127.0.0.1:8010
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# frontend — http://localhost:5180 (/api va /media 8010'ga proxy qilinadi)
+cd frontend
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+## Admin panelda nima qilinadi
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# Portfolio
+| Bo'lim | Nima uchun |
+| --- | --- |
+| Sayt sozlamalari | Ism, hero matni, avatar, telefon, Telegram, ijtimoiy tarmoqlar, SEO |
+| Loyihalar | Portfolio: muqova (shaffof mockup), logo, brend rangi, havolalar (sayt, App Store, Google Play), galereya |
+| Maqolalar | Blog: CKEditor (rasm yuklash, kod bloklari, video), qoralama → chop etish |
+| Mavzular / Teglar | Blog rubrikalari |
+| Brief / So'rovlar | Saytdagi formalardan kelgan arizalar (holat: yangi → ko'rib chiqilmoqda → yakunlangan) |
+
+Loyiha kartochkasi uchun muqova shaffof fonli bo'lsa, orqasida "Aksent rang" ko'rinadi. Yangi loyiha
+qo'shganda `import_projects` buyrug'idagi `compose_cover()` (backend/portfolio/mockups.py) bilan
+skrinshotdan monitor/telefon mockup yasash mumkin.
+
+## Deploy (Ubuntu VPS)
+
+```bash
+# serverda: /srv/portfolio
+cd backend && cp .env.example .env   # SECRET_KEY, DATABASE_URL va h.k.ni to'ldiring
+.venv/bin/pip install -r requirements.txt
+.venv/bin/python manage.py migrate && .venv/bin/python manage.py collectstatic --noinput
+# media'ni lokal kompyuterdan ko'chiring: rsync -av backend/media/ server:/srv/portfolio/backend/media/
+
+cd ../frontend && npm ci && npm run build
+
+sudo cp deploy/portfolio.service /etc/systemd/system/ && sudo systemctl enable --now portfolio
+sudo cp deploy/nginx.conf /etc/nginx/sites-available/asilbek-yuldashev.uz
+sudo ln -s /etc/nginx/sites-available/asilbek-yuldashev.uz /etc/nginx/sites-enabled/
+sudo nginx -t && sudo systemctl reload nginx
+sudo certbot --nginx -d asilbek-yuldashev.uz -d www.asilbek-yuldashev.uz
+```
+
+## Rasmlar litsenziyasi
+
+Hero fotosurati: "Aurora Over Mendenhall Glacier" — USDA Forest Service (Harvey Hergett), Public Domain,
+indigo rangga qayta ishlangan.

@@ -1,0 +1,75 @@
+{% extends 'admin/base.html' %}
+{% load i18n %}
+
+{% block title %}Boshqaruv paneli | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+    {% include "unfold/helpers/site_branding.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="ay-dash">
+    <div class="ay-hello">
+        <div>
+            <h1>Salom, {{ request.user.first_name|default:request.user.username }} 👋</h1>
+            <p>Bugun nima yozamiz yoki qaysi loyihani qo'shamiz?</p>
+        </div>
+        <div class="ay-quick">
+            {% for q in dash_quick %}
+                <a href="{{ q.href }}" class="ay-btn{% if forloop.first %} ay-btn--primary{% endif %}">
+                    <span class="material-symbols-outlined">{{ q.icon }}</span>{{ q.title }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="ay-cards">
+        {% for c in dash_cards %}
+            <a href="{{ c.href }}" class="ay-card">
+                <span class="material-symbols-outlined ay-card__icon">{{ c.icon }}</span>
+                <span class="ay-card__title">{{ c.title }}</span>
+                <span class="ay-card__value">{{ c.value }}</span>
+                <span class="ay-card__hint">{{ c.hint }}</span>
+            </a>
+        {% endfor %}
+    </div>
+
+    <div class="ay-grid">
+        <section class="ay-panel">
+            <header><h2>So'nggi brieflar</h2><a href="{% url 'admin:core_contactrequest_changelist' %}">Barchasi →</a></header>
+            {% for r in dash_requests %}
+                <a class="ay-row" href="{% url 'admin:core_contactrequest_change' r.pk %}">
+                    <span class="ay-row__main"><b>{{ r.name }}</b><small>{{ r.phone }}{% if r.company %} · {{ r.company }}{% endif %}</small></span>
+                    <span class="ay-pill ay-pill--{{ r.status }}">{{ r.get_status_display }}</span>
+                </a>
+            {% empty %}
+                <p class="ay-empty">Hozircha brief yo'q. Saytdagi forma orqali kelganlari shu yerda ko'rinadi.</p>
+            {% endfor %}
+        </section>
+
+        <section class="ay-panel">
+            <header><h2>Qoralamalar</h2><a href="{% url 'admin:blog_post_changelist' %}?status__exact=draft">Barchasi →</a></header>
+            {% for p in dash_drafts %}
+                <a class="ay-row" href="{% url 'admin:blog_post_change' p.pk %}">
+                    <span class="ay-row__main"><b>{{ p.title }}</b><small>{{ p.category|default:"Mavzusiz" }} · {{ p.updated_at|date:"d.m.Y" }}</small></span>
+                    <span class="material-symbols-outlined">edit</span>
+                </a>
+            {% empty %}
+                <p class="ay-empty">Qoralama yo'q.</p>
+            {% endfor %}
+        </section>
+
+        <section class="ay-panel">
+            <header><h2>Eng ko'p o'qilgan</h2></header>
+            {% for p in dash_top_posts %}
+                <a class="ay-row" href="{% url 'admin:blog_post_change' p.pk %}">
+                    <span class="ay-row__main"><b>{{ p.title }}</b><small>{{ p.published_at|date:"d.m.Y" }}</small></span>
+                    <span class="ay-views"><span class="material-symbols-outlined">visibility</span>{{ p.views }}</span>
+                </a>
+            {% empty %}
+                <p class="ay-empty">Chop etilgan maqola yo'q.</p>
+            {% endfor %}
+        </section>
+    </div>
+</div>
+{% endblock %}

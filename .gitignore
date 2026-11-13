@@ -1,24 +1,15 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# Python
+__pycache__/
+*.pyc
+backend/.venv/
+backend/.env
+backend/db.sqlite3
+backend/media/
+backend/staticfiles/
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.env*
+# Xom skrinshotlar (66 MB) — import_projects ulardan siqilgan WebP yasaydi
+assets/project-shots/
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
