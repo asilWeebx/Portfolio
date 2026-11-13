@@ -41,7 +41,23 @@ Loyiha kartochkasi uchun muqova shaffof fonli bo'lsa, orqasida "Aksent rang" ko'
 qo'shganda `import_projects` buyrug'idagi `compose_cover()` (backend/portfolio/mockups.py) bilan
 skrinshotdan monitor/telefon mockup yasash mumkin.
 
-## Deploy (Ubuntu VPS)
+## Deploy: frontend Vercel'da, backend VPS'da (tavsiya)
+
+```
+asilbek-yuldashev.uz      → Vercel (React)  — /api, /media, /sitemap.xml Vercel orqali backend'ga proxy
+api.asilbek-yuldashev.uz  → VPS (Django)    — API, admin: https://api.asilbek-yuldashev.uz/admin/
+```
+
+**Vercel:** New Project → GitHub'dan `Portfolio` repo → **Root Directory: `frontend`** → Deploy.
+Framework, build buyrug'i va proxy qoidalari `frontend/vercel.json` ichida. Domen: Settings → Domains →
+`asilbek-yuldashev.uz` (DNS'da Vercel ko'rsatgan A/CNAME yozuvlari).
+
+**DNS:** `api` subdomeni uchun A yozuv → VPS IP manzili.
+
+**VPS:** quyidagi qadamlar, faqat nginx uchun `deploy/nginx-api.conf` ishlatiladi
+(`npm run build` va frontend qismi shart emas).
+
+## Deploy (hammasi bitta VPS'da)
 
 ```bash
 # serverda: /srv/portfolio
